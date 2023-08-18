@@ -1,0 +1,1 @@
+conda env config vars set LD_LIBRARY_PATH=/home/nexon/anaconda3/envs/basler_36/lib
