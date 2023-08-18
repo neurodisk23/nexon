@@ -18,7 +18,7 @@ import cv2
 import sys
 
 # Number of images to be grabbed.
-countOfImagesToGrab = 100
+countOfImagesToGrab = 1000
 
 # The exit code of the sample application.
 exitCode = 0
@@ -31,7 +31,7 @@ try:
     camera = pylon.InstantCamera(pylon.TlFactory.GetInstance().CreateFirstDevice(cam_info))
     camera.Open()
     #('Mono8', 'BayerRG8', 'BayerRG12', 'BayerRG12Packed', 'YUV422Packed', 'YUV422_YUYV_Packed')
-    camera.PixelFormat = "BayerRG8"
+    camera.PixelFormat = "YUV422_YUYV_Packed"
     # Print the model name of the camera.
     print("Using device ", camera.GetDeviceInfo().GetModelName())
 
@@ -62,7 +62,8 @@ try:
             print("SizeX: ", grabResult.Width)
             print("SizeY: ", grabResult.Height)
             img = grabResult.Array
-            J = cv2.cvtColor(img, cv2.COLOR_BayerRG2RGB)
+            #J = cv2.cvtColor(img, cv2.COLOR_BayerRG2RGB)
+            J = cv2.cvtColor(img, cv2.COLOR_YUV2BGR_YUYV)
             cv2.imshow("Camera Image", J)
             key = cv2.waitKey(1)
             if key == 27:  # Press ESC to exit
