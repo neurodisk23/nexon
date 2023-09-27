@@ -1,5 +1,5 @@
-import socket
 import time
+import socket
 
 def send_data(ip_address, port, message,mode_delay):
     try:
@@ -15,7 +15,7 @@ def send_data(ip_address, port, message,mode_delay):
             token += data 
             
             # Delay for 1 second
-            time.sleep(1)
+            time.sleep(0.25)
         
     except Exception as e:
         print('An error occurred while sending data:', str(e))
@@ -27,30 +27,9 @@ def send_data(ip_address, port, message,mode_delay):
 # Example usage
 ip_address = '169.254.178.227'
 port = 5001
-message = "A1,N,0,0,0,0,0,0,0,0,0\r\n"
 
-# Call the send_data function
-send_data(ip_address, port, message,1)
 
-message = "A,N,0,1,50,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,1)
-
-message = "A,D,0,1,50,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,1)
-
-send_data(ip_address, port, message,1)
-
-message = "A,D,10,0,0,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,2)
-message = "A,D,40,0,0,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,3)
-message = "A,N,0,0,50,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,3)
+message = "A,N,0,1,100,0,0,0,0,0,0\r\n"
+send_data(ip_address, port, message,40)
 message = "A,N,0,0,0,0,0,0,0,0,0\r\n"
-
-send_data(ip_address, port, message,4)
+send_data(ip_address, port, message,50)
